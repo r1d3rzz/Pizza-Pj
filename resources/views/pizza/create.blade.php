@@ -12,8 +12,10 @@
                     <div class="card-body">
                         <div class="form-group">
                             <ul class="list-group">
-                                <li class="list-group-item list-group-item-action">View</li>
-                                <li class="list-group-item list-group-item-action">Add</li>
+                                <a href="{{route('pizza.index')}}"
+                                    class="list-group-item list-group-item-action">View</a>
+                                <a href="{{route('pizza.create')}}"
+                                    class="list-group-item list-group-item-action">Add</a>
                             </ul>
                         </div>
                     </div>
