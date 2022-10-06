@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PizzaController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//for Pizza Routes
+Route::get('/pizza',[PizzaController::class,'index'])->name('pizza.index');
