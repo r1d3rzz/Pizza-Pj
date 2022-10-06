@@ -33,7 +33,7 @@
                             <tbody>
                                 @foreach ($pizzas as $key => $pizza)
                                 <tr>
-                                    <th scope="row">{{$key+1}}</th>
+                                    <th scope="row">{{$pizza->id}}</th>
                                     <td><img src="{{Storage::url($pizza->image)}}" width="80" alt=""></td>
                                     <td>{{$pizza->name}}</td>
                                     <td>{{$pizza->description}}</td>
@@ -42,7 +42,11 @@
                                     <td>${{$pizza->small_pizza_price}}.00</td>
                                     <td>{{$pizza->category}}</td>
                                     <td><button class="btn btn-sm btn-danger">Delete</button></td>
-                                    <td><button class="btn btn-sm btn-primary">Edit</button></td>
+                                    <td>
+                                        <form action="{{route('pizza.edit',$pizza->id)}}">
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

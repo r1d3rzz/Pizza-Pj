@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PizzaStoreRequest;
+use App\Http\Requests\PizzaUpdateRequest;
 use App\Models\Pizza;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PizzaController extends Controller
 {
@@ -71,7 +73,15 @@ class PizzaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pizza = Pizza::find($id);
+        // dd($pizza->image);
+        if($pizza){
+            return view('pizza.edit',[
+                'pizza' => $pizza
+            ]);
+        }
+
+        return redirect()->route('pizza.index');
     }
 
     /**
@@ -81,9 +91,27 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PizzaUpdateRequest $request, $id)
     {
-        //
+        $pizza = Pizza::find($id);
+
+        if($request->image !== null){
+            $path = $request->image->store('public/pizza');
+        }else{
+            $path = $pizza->image;
+        }
+
+        DB::table('pizzas')->where('id',$id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'small_pizza_price' => $request->small_pizza_price,
+            'medium_pizza_price' => $request->medium_pizza_price,
+            'large_pizza_price' => $request->small_pizza_price,
+            'category' => $request->category,
+            'image' => $path,
+        ]);
+
+        return redirect()->route('pizza.index')->with('message','Pizza updated Successful');
     }
 
     /**
