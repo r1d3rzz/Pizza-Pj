@@ -11,7 +11,7 @@
                     @method('PUT')
                     @csrf
                     <div class="card">
-                        <div class="card-header">Edit</div>
+                        <div class="card-header">Edit Pizza <strong>(Item No.{{$pizza->id}})</strong></div>
 
                         <div class="card-body">
                             @if (count($errors)>0)

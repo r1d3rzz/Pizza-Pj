@@ -106,7 +106,7 @@ class PizzaController extends Controller
             'description' => $request->description,
             'small_pizza_price' => $request->small_pizza_price,
             'medium_pizza_price' => $request->medium_pizza_price,
-            'large_pizza_price' => $request->small_pizza_price,
+            'large_pizza_price' => $request->large_pizza_price,
             'category' => $request->category,
             'image' => $path,
         ]);
@@ -122,6 +122,10 @@ class PizzaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pizza = Pizza::find($id);
+
+        $pizza->delete();
+
+        return redirect()->route('pizza.index')->with('message','Pizza deleted Successful');
     }
 }

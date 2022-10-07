@@ -24,7 +24,7 @@ class PizzaUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required','min:3','max:20'],
+            'name' => ['required','min:3','max:50'],
             'description' => ['required','min:3','max:500'],
             'small_pizza_price' => ['required','numeric'],
             'medium_pizza_price' => ['required','numeric'],
