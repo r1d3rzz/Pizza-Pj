@@ -45,7 +45,7 @@
                                         {{$order->user->email}} <br>
                                         {{$order->phone}}
                                     </td>
-                                    <td>{{$order->pizza->name}}</td>
+                                    <td>{{$order->pizza->description}}</td>
                                     <td>{{$order->small_pizza}}</td>
                                     <td>{{$order->medium_pizza}}</td>
                                     <td>{{$order->large_pizza}}</td>

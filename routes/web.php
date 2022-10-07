@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [FrontendController::class, 'index'])->name('frontend');
+Route::get('/pizza/{id}/order', [FrontendController::class, 'show'])->name('pizza.order');
 
 
 //for Pizza Routes

@@ -43,7 +43,7 @@ class PizzaController extends Controller
         $path = $request->image->store('public/pizza');
         Pizza::create([
             'name' => $request->name,
-            'description' => $request->name,
+            'description' => $request->description,
             'small_pizza_price' => $request->small_pizza_price,
             'medium_pizza_price' => $request->medium_pizza_price,
             'large_pizza_price' => $request->large_pizza_price,
