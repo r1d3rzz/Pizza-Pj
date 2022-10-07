@@ -5,13 +5,14 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <x-MenuNav />
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div>Pizza House</div>
                         <div>
                             <form action="{{route('pizza.create')}}">
-                                <button class="btn btn-secondary btn-sm">Create</button>
+                                <button class="btn btn-secondary btn-sm">Add Pizza</button>
                             </form>
                         </div>
                     </div>

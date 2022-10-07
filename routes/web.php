@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\UserOrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,7 @@ Route::middleware(['admin','auth'])->group(function(){
     Route::put('/pizza/{id}/update',[PizzaController::class,'update'])->name('pizza.update');
     Route::delete('/pizza/{id}/destroy',[PizzaController::class,'destroy'])->name('pizza.destroy');
 });
+
+//for Users
+
+Route::get('/user/order',[UserOrderController::class,'index'])->name('user.order');
