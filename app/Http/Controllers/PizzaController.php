@@ -18,7 +18,7 @@ class PizzaController extends Controller
     public function index()
     {
         return view('pizza.index',[
-            'pizzas' => Pizza::latest()->get(),
+            'pizzas' => Pizza::latest()->paginate(4),
         ]);
     }
 

@@ -7,7 +7,14 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">{{ __('Pizza House') }}</div>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>Pizza House</div>
+                        <div>
+                            <form action="{{route('pizza.create')}}">
+                                <button class="btn btn-secondary btn-sm">Create</button>
+                            </form>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @if (session('message'))
@@ -135,6 +142,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        {{$pizzas->links()}}
                     </div>
                 </div>
             </div>
