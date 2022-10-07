@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('pizza_id');
-            $table->string('small_pizza')->default(0);
-            $table->string('medium_pizza')->default(0);
-            $table->string('large_pizza')->default(0);
+            $table->string('small_pizza')->default('0');
+            $table->string('medium_pizza')->default('0');
+            $table->string('large_pizza')->default('0');
             $table->string('date');
             $table->string('time');
             $table->text('body');

@@ -38,3 +38,4 @@ Route::middleware(['admin','auth'])->group(function(){
 //for Users
 
 Route::get('/user/order',[UserOrderController::class,'index'])->name('user.order');
+Route::put('/order/{id}/status',[UserOrderController::class,'statusChangeHandler'])->name('order.status');

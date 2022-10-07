@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class UserOrderController extends Controller
@@ -13,7 +14,9 @@ class UserOrderController extends Controller
      */
     public function index()
     {
-        return view('order.index');
+        return view('order.index',[
+            'orders' => Order::latest()->get(),
+        ]);
     }
 
     /**
@@ -80,5 +83,15 @@ class UserOrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function statusChangeHandler($id){
+        $order = Order::find($id);
+
+        $order->update([
+            'status' => request('status'),
+        ]);
+
+        return back();
     }
 }
