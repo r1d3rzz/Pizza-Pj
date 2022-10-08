@@ -24,6 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', [FrontendController::class, 'index'])->name('frontend');
 Route::get('/pizza/{id}/order', [FrontendController::class, 'show'])->name('pizza.order');
+Route::post('/pizza/order', [FrontendController::class, 'store'])->name('order.store');
 
 
 //for Pizza Routes
