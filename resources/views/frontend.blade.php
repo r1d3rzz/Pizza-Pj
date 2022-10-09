@@ -10,18 +10,25 @@
                     <div class="card-header bg-danger text-white">Menu</div>
                     <div class="card-body">
                         <ul class="list-group">
-                            <li class="list-group-item list-group-item-action">Category 1</li>
-                            <li class="list-group-item list-group-item-action">Category 2</li>
-                            <li class="list-group-item list-group-item-action">Category 3</li>
-                            <li class="list-group-item list-group-item-action">Category 4</li>
+                            <form action="{{route('frontend')}}">
+                                <a href="{{route('frontend')}}" class="list-group-item list-group-item-action">All
+                                    Pizzas</a>
+                                <input type="submit" value="vegetarian" name="category"
+                                    class="list-group-item list-group-item-action">
+                                <input type="submit" value="nonvegetarian" name="category"
+                                    class="list-group-item list-group-item-action">
+                                <input type="submit" value="traditional" name="category"
+                                    class="list-group-item list-group-item-action">
+                            </form>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header bg-danger text-white">
-                        Pizza
+                    <div class="card-header bg-danger text-white d-flex justify-content-between">
+                        <div>Pizza House</div>
+                        <div>Total ({{count($pizzas)}})</div>
                     </div>
                     <div class="card-body">
                         <div class="row">

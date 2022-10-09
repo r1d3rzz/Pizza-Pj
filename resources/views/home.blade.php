@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div>
-                            Orders
+                            Your Orders
                         </div>
                         <div>
                             @if (count($orders)>0)
@@ -44,7 +44,7 @@
                                         {{$order->user->email}} <br>
                                         {{$order->phone}}
                                     </td>
-                                    <td>{{$order->pizza->description}}</td>
+                                    <td>{{$order->pizza->name}}</td>
                                     <td>{{$order->small_pizza}}</td>
                                     <td>{{$order->medium_pizza}}</td>
                                     <td>{{$order->large_pizza}}</td>

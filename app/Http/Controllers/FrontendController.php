@@ -9,9 +9,14 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        if(!$request->category){
+            return view('frontend',[
+                'pizzas' => Pizza::latest()->get(),
+            ]);
+        }
         return view('frontend',[
-            'pizzas' => Pizza::latest()->get(),
+            'pizzas' => Pizza::latest()->where('category',$request->category)->get(),
         ]);
     }
 
