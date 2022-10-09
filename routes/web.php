@@ -22,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+//For Users
 Route::get('/', [FrontendController::class, 'index'])->name('frontend');
 Route::get('/pizza/{id}/order', [FrontendController::class, 'show'])->name('pizza.order');
 Route::post('/pizza/order', [FrontendController::class, 'store'])->name('order.store');
@@ -29,16 +31,15 @@ Route::post('/pizza/order', [FrontendController::class, 'store'])->name('order.s
 
 //for Pizza Routes
 Route::middleware(['admin','auth'])->group(function(){
-    Route::get('/pizza',[PizzaController::class,'index'])->name('pizza.index');
-    Route::get('/pizza/create',[PizzaController::class,'create'])->name('pizza.create');
-    Route::post('/pizza/store',[PizzaController::class,'store'])->name('pizza.store');
-    Route::get('/pizza/{id}/edit',[PizzaController::class,'edit'])->name('pizza.edit');
-    Route::put('/pizza/{id}/update',[PizzaController::class,'update'])->name('pizza.update');
-    Route::delete('/pizza/{id}/destroy',[PizzaController::class,'destroy'])->name('pizza.destroy');
-
-//for Users
-
-Route::get('/user/order',[UserOrderController::class,'index'])->name('user.order');
-Route::put('/order/{id}/status',[UserOrderController::class,'statusChangeHandler'])->name('order.status');
+    Route::prefix('admin')->group(function(){
+        Route::get('/pizza',[PizzaController::class,'index'])->name('pizza.index');
+        Route::get('/pizza/create',[PizzaController::class,'create'])->name('pizza.create');
+        Route::post('/pizza/store',[PizzaController::class,'store'])->name('pizza.store');
+        Route::get('/pizza/{id}/edit',[PizzaController::class,'edit'])->name('pizza.edit');
+        Route::put('/pizza/{id}/update',[PizzaController::class,'update'])->name('pizza.update');
+        Route::delete('/pizza/{id}/destroy',[PizzaController::class,'destroy'])->name('pizza.destroy');
+        Route::get('/user/order',[UserOrderController::class,'index'])->name('user.order');
+        Route::put('/order/{id}/status',[UserOrderController::class,'statusChangeHandler'])->name('order.status');
+    });
 });
 

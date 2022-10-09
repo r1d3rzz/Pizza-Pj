@@ -11,6 +11,11 @@
 
                     <div class="card-body">
                         @auth
+                        @if (session('message'))
+                        <div class="alert alert-success my-3">
+                            {{session('message')}}
+                        </div>
+                        @endif
                         <form action="{{route('order.store')}}" method="POST">
                             @csrf
                             <p><input name="pizza_id" type="text" value="{{$pizza->id}}" class="form-control" hidden>
@@ -57,11 +62,6 @@
                         @if (session('errorMessage'))
                         <div class="alert alert-danger my-3">
                             {{session('errorMessage')}}
-                        </div>
-                        @endif
-                        @if (session('message'))
-                        <div class="alert alert-success my-3">
-                            {{session('message')}}
                         </div>
                         @endif
                         @else

@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="title">
-        Pizza House
+        Pizza House | Dashboard
     </x-slot>
 
     <div class="container">
