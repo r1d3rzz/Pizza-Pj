@@ -76,8 +76,14 @@
                                     </a>
 
                                     <a class="dropdown-item" href="{{route('home')}}">
-                                        Your Order
+                                        Orders
                                     </a>
+
+                                    @if (auth()->user()->is_admin)
+                                    <a class="dropdown-item" href="{{route('pizza.customers')}}">
+                                        Customers
+                                    </a>
+                                    @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

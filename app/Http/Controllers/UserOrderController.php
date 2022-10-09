@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserOrderController extends Controller
@@ -93,5 +94,12 @@ class UserOrderController extends Controller
         ]);
 
         return back();
+    }
+
+    public function users()
+    {
+        return view('customers',[
+            'customers' => User::latest()->get()
+        ]);
     }
 }
