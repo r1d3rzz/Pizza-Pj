@@ -9,6 +9,8 @@
                     <a href="{{route('pizza.create')}}" class="list-group-item list-group-item-action">Add</a>
                     <a href="{{route('pizza.customers')}}" class="list-group-item list-group-item-action">Customers</a>
                     <a href="{{route('user.order')}}" class="list-group-item list-group-item-action">User Orders</a>
+                    <a href="{{route('pizza.category')}}" class="list-group-item list-group-item-action">Create
+                        Category</a>
                 </ul>
             </div>
         </div>

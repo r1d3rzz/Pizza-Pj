@@ -128,4 +128,8 @@ class PizzaController extends Controller
 
         return redirect()->route('pizza.index')->with('message','Pizza deleted Successful');
     }
+
+    public function category(){
+        return view('pizza.category');
+    }
 }
