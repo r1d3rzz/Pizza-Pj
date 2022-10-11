@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\UserOrderController;
@@ -41,7 +42,8 @@ Route::middleware(['admin','auth'])->group(function(){
         Route::get('/user/order',[UserOrderController::class,'index'])->name('user.order');
         Route::put('/order/{id}/status',[UserOrderController::class,'statusChangeHandler'])->name('order.status');
         Route::get('/customers',[UserOrderController::class,'users'])->name('pizza.customers');
-        Route::get('/pizza/category',[PizzaController::class,'category'])->name('pizza.category');
+        Route::get('/pizza/category',[CategoryController::class,'index'])->name('pizza.category');
+        Route::post('/pizza/category',[CategoryController::class,'store'])->name('category.store');
     });
 });
 

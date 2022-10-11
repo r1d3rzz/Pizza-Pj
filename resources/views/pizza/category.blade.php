@@ -8,11 +8,14 @@
             <x-MenuNav />
 
             <div class="col-md-9">
-                <form action="{{route('pizza.store')}}" method="POST" enctype="multipart/form-data">@csrf
+                <form action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">@csrf
                     <div class="card">
                         <div class="card-header">Pizza Category</div>
 
                         <div class="card-body">
+                            @if (session('message'))
+                            <div class="alert alert-warning">{{session('message')}}</div>
+                            @endif
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="card">
@@ -20,14 +23,17 @@
                                             Create New Category
                                         </div>
                                         <div class="card-body">
-                                            <div class="mb-3">
-                                                <label for="name">Name</label>
-                                                <input type="text" id="name" class="form-control">
-                                            </div>
+                                            <form action="{{route('category.store')}}" method="POST">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <label for="name">Name</label>
+                                                    <input name="name" type="text" id="name" class="form-control">
+                                                </div>
 
-                                            <div class="d-flex justify-content-end">
-                                                <button class="btn btn-sm btn-primary">Add</button>
-                                            </div>
+                                                <div class="d-flex justify-content-end">
+                                                    <button class="btn btn-sm btn-primary">Add</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -38,11 +44,15 @@
                                         </div>
                                         <div class="card-body">
                                             <ul class="list-group">
-                                                <li class="list-group-item list-group-item-action">Test</li>
-                                                <li class="list-group-item list-group-item-action">Test</li>
-                                                <li class="list-group-item list-group-item-action">Test</li>
-                                                <li class="list-group-item list-group-item-action">Test</li>
-                                                <li class="list-group-item list-group-item-action">Test</li>
+                                                @forelse ($categories as $category)
+                                                <li class="list-group-item list-group-item-action">
+                                                    {{$category->name}}
+                                                </li>
+                                                @empty
+                                                <div class="alert alert-warning">
+                                                    No Category!
+                                                </div>
+                                                @endforelse
                                             </ul>
                                         </div>
                                     </div>
