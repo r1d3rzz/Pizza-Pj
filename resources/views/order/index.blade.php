@@ -33,7 +33,7 @@
                                     <th scope="col">Date/Time</th>
                                     <th scope="col">Message</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col" class="text-center" colspan="3">Action</th>
+                                    <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,18 +54,55 @@
                                             $order->pizza->large_pizza_price * $order->large_pizza}}</strong>.00</td>
                                     <td>{{$order->date}}/{{$order->time}}</td>
                                     <td>{{$order->body}}</td>
-                                    <td>{{$order->status}}</td>
-                                    <form action="{{route('order.status',$order->id)}}" method="POST">
-                                        @method('PUT')
-                                        @csrf
-                                        <td><input type="submit" name="status" value="pending"
-                                                class="btn btn-sm btn-warning"></td>
-                                        <td><input type="submit" name="status" value="confirm"
-                                                class="btn btn-sm btn-primary"></td>
-                                        <td><input type="submit" name="status" value="reject"
-                                                class="btn btn-sm btn-danger"></td>
-                                    </form>
+                                    @if ($order->status === 'pending')
+                                    <td>
+                                        <form action="{{route('order.status',$order->id)}}" method="POST">
+                                            @method('PUT')
+                                            @csrf
+                                            <button class="btn btn-sm btn-warning">pending</button>
+                                        </form>
+                                    </td>
+                                    @else
+                                    <td>
+                                        <form action="{{route('order.status',$order->id)}}" method="POST">
+                                            @method('PUT')
+                                            @csrf
+                                            <button class="btn btn-sm btn-primary">confirm</button>
+                                        </form>
+                                    </td>
+                                    @endif
+                                    <td><button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal_{{$order->id}}">delete</button></td>
                                 </tr>
+
+                                {{-- Model --}}
+                                <div class="modal fade" id="exampleModal_{{$order->id}}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-danger text-white">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Order No.
+                                                    <b>{{$order->id}}</b>?
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure to this order?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm btn-primary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <form action="{{route('order.delete',$order->id)}}" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- Model --}}
 
                                 @empty
                                 <div class="alert alert-warning">

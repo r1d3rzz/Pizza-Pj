@@ -44,6 +44,7 @@ Route::middleware(['admin','auth'])->group(function(){
         Route::put('/order/{id}/status',[UserOrderController::class,'statusChangeHandler'])->name('order.status');
         Route::get('/customers',[UserOrderController::class,'users'])->name('pizza.customers');
         Route::post('/pizza/category',[CategoryController::class,'store'])->name('category.store');
+        Route::delete('/order/{id}/delete',[UserOrderController::class,'order_destroy'])->name('order.delete');
     });
 });
 

@@ -47,7 +47,7 @@
                             <p><input type="date" class="form-control" name="date" id="" value="{{old('date')}}"></p>
 
                             <p><textarea name="body" id="" cols="30" rows="3" class="form-control"
-                                    placeholder="message"></textarea></p>
+                                    placeholder="message">{{old('body')}}</textarea></p>
 
                             <div class="d-flex justify-content-center mt-3">
                                 <div>

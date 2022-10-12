@@ -22,7 +22,7 @@
                             <div class="form-group mb-3">
                                 <label for="description">Description</label>
                                 <textarea type="text" name="description" id="description" class="form-control"
-                                    placeholder="name of pizza">{{old('description')}}</textarea>
+                                    placeholder="description of pizza">{{old('description')}}</textarea>
                             </div>
 
                             <div class="form-group mb-3 d-flex align-items-center">

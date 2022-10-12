@@ -89,9 +89,15 @@ class UserOrderController extends Controller
     public function statusChangeHandler($id){
         $order = Order::find($id);
 
-        $order->update([
-            'status' => request('status'),
-        ]);
+        if($order->status === 'pending'){
+            $order->update([
+                'status' => 'comfirm',
+            ]);
+        }else{
+            $order->update([
+                'status' => 'pending',
+            ]);
+        }
 
         return back();
     }
@@ -101,5 +107,13 @@ class UserOrderController extends Controller
         return view('customers',[
             'customers' => User::latest()->get()
         ]);
+    }
+
+    public function order_destroy($id){
+        $order = Order::find($id);
+
+        $order->delete();
+
+        return back();
     }
 }
