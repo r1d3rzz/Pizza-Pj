@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderStoreRequest;
+use App\Mail\CustomerOrderMail;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Pizza;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
@@ -50,6 +52,13 @@ class FrontendController extends Controller
             'time' => $request->time,
             'body' => $request->body
         ]);
+
+        $customer_name = auth()->user()->name;
+        $pizza_name = $request->pizzaName;
+
+        if(!auth()->user()->is_admin){
+            Mail::to(auth()->user()->email)->send(new CustomerOrderMail($customer_name,$pizza_name));
+        }
 
         return back()->with('message','Thanks for your Order.');
     }

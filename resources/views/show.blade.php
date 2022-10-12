@@ -22,9 +22,12 @@
                             </p>
                             <p>Name : <b>{{auth()->user()->name}}</b></p>
 
+                            <p><input name="pizzaName" type="text" value="{{$pizza->name}}" class="form-control" hidden>
+                            </p>
+
                             <p>Email : <b>{{auth()->user()->email}}</b></p>
 
-                            <p><label for="phone">Phone No.</label> <input name="phone" id="phone" type="text"
+                            <p><label for=" phone">Phone No.</label> <input name="phone" id="phone" type="text"
                                     placeholder="phone no." class="form-control" value="{{old('phone')}}"></p>
 
                             <p><label for="s.pizza">Small Pizza : </label> <input name="small_pizza" id="s.pizza"
