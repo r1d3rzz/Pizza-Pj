@@ -57,7 +57,7 @@ class FrontendController extends Controller
         $pizza_name = $request->pizzaName;
 
         if(!auth()->user()->is_admin){
-            Mail::to(auth()->user()->email)->send(new CustomerOrderMail($customer_name,$pizza_name));
+            Mail::to(auth()->user()->email)->queue(new CustomerOrderMail($customer_name,$pizza_name));
         }
 
         return back()->with('message','Thanks for your Order.');
