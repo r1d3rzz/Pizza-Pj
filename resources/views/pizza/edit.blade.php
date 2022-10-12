@@ -61,12 +61,12 @@
 
                             <div class="form-group mb-3">
                                 <label for="category">Category</label>
-                                <select class="form-control" name="category">
-                                    <option value="{{$pizza->category}}">{{$pizza->category}} (Currently Choice)
+                                <select class="form-control" name="category_id">
+                                    @foreach ($categories as $category)
+                                    <option {{$category->id == old('category_id',$pizza->category->id) ? 'selected' :
+                                        ''}} value="{{$category->id}}">{{$category->name}}
                                     </option>
-                                    <option value="vegetarian">Vegetarian</option>
-                                    <option value="nonvegetarian">Non-vegetarian</option>
-                                    <option value="traditional">Traditional</option>
+                                    @endforeach
                                 </select>
                             </div>
 

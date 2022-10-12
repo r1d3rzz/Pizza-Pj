@@ -45,11 +45,13 @@
 
                             <div class="form-group mb-3">
                                 <label for="category">Category</label>
-                                <select class="form-control" name="category">
+                                <select class="form-control" name="category_id">
                                     <option value="">Choose Category</option>
-                                    <option value="vegetarian">Vegetarian</option>
-                                    <option value="nonvegetarian">Non-vegetarian</option>
-                                    <option value="traditional">Traditional</option>
+                                    @forelse ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @empty
+                                    <option value="" disabled>Empty Category</option>
+                                    @endforelse
                                 </select>
                             </div>
 

@@ -10,16 +10,17 @@
                     <div class="card-header bg-danger text-white">Menu</div>
                     <div class="card-body">
                         <ul class="list-group">
-                            <form action="{{route('frontend')}}">
-                                <a href="{{route('frontend')}}" class="list-group-item list-group-item-action">All
-                                    Pizzas</a>
-                                <input type="submit" value="vegetarian" name="category"
-                                    class="list-group-item list-group-item-action">
-                                <input type="submit" value="nonvegetarian" name="category"
-                                    class="list-group-item list-group-item-action">
-                                <input type="submit" value="traditional" name="category"
-                                    class="list-group-item list-group-item-action">
-                            </form>
+                            @if (count($categories)>0)
+                            <a href="{{route('frontend')}}" class="list-group-item list-group-item-action">All
+                                Pizzas</a>
+                            @endif
+                            @forelse ($categories as $category)
+                            <a href="/?category={{$category->id}}" class="list-group-item list-group-item-action">
+                                {{$category->name}}
+                            </a>
+                            @empty
+                            <div>No Cateogry</div>
+                            @endforelse
                         </ul>
                     </div>
                 </div>
@@ -28,6 +29,13 @@
                 <div class="card">
                     <div class="card-header bg-danger text-white d-flex justify-content-between">
                         <div>Pizza House</div>
+                        @if (request('category'))
+                        @foreach ($categories as $category)
+                        @if ($category->id == request('category'))
+                        <div>Category : <b>{{$category->name}}</b></div>
+                        @endif
+                        @endforeach
+                        @endif
                         <div>Total ({{count($pizzas)}})</div>
                     </div>
                     <div class="card-body">

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('small_pizza_price');
             $table->integer('medium_pizza_price');
             $table->integer('large_pizza_price');
-            $table->string('category');
+            $table->foreignId('category_id');
             $table->string('image');
             $table->timestamps();
         });

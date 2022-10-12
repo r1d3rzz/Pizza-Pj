@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PizzaStoreRequest extends FormRequest
 {
@@ -29,7 +30,7 @@ class PizzaStoreRequest extends FormRequest
             'small_pizza_price' => ['required','numeric'],
             'medium_pizza_price' => ['required','numeric'],
             'large_pizza_price' => ['required','numeric'],
-            'category' => ['required','min:3','max:20'],
+            'category_id' => ['required',Rule::exists('categories','id')],
             'image' => ['required','mimes:png,jpg,jepg'],
         ];
     }

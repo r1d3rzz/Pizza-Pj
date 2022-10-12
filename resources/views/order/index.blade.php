@@ -46,9 +46,9 @@
                                         {{$order->phone}}
                                     </td>
                                     <td>{{$order->pizza->description}}</td>
-                                    <td>{{$order->small_pizza}}</td>
-                                    <td>{{$order->medium_pizza}}</td>
-                                    <td>{{$order->large_pizza}}</td>
+                                    <td>{{$order->small_pizza}} x <b>${{$order->pizza->small_pizza_price}}.00</b></td>
+                                    <td>{{$order->medium_pizza}} x <b>${{$order->pizza->medium_pizza_price}}.00</b></td>
+                                    <td>{{$order->large_pizza}} x <b>${{$order->pizza->large_pizza_price}}.00</b></td>
                                     <td>$<strong>{{$order->pizza->small_pizza_price * $order->small_pizza +
                                             $order->pizza->medium_pizza_price * $order->medium_pizza +
                                             $order->pizza->large_pizza_price * $order->large_pizza}}</strong>.00</td>

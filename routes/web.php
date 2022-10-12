@@ -28,6 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [FrontendController::class, 'index'])->name('frontend');
 Route::get('/pizza/{id}/order', [FrontendController::class, 'show'])->name('pizza.order');
 Route::post('/pizza/order', [FrontendController::class, 'store'])->name('order.store');
+Route::get('/pizza/category',[CategoryController::class,'index'])->name('pizza.category');
 
 
 //for Pizza Routes
@@ -42,7 +43,6 @@ Route::middleware(['admin','auth'])->group(function(){
         Route::get('/user/order',[UserOrderController::class,'index'])->name('user.order');
         Route::put('/order/{id}/status',[UserOrderController::class,'statusChangeHandler'])->name('order.status');
         Route::get('/customers',[UserOrderController::class,'users'])->name('pizza.customers');
-        Route::get('/pizza/category',[CategoryController::class,'index'])->name('pizza.category');
         Route::post('/pizza/category',[CategoryController::class,'store'])->name('category.store');
     });
 });

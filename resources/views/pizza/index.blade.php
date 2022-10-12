@@ -99,7 +99,7 @@
                                     <td>${{$pizza->small_pizza_price}}.00</td>
                                     <td>${{$pizza->medium_pizza_price}}.00</td>
                                     <td>${{$pizza->large_pizza_price}}.00</td>
-                                    <td>{{$pizza->category}}</td>
+                                    <td>{{$pizza->category->name}}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal_{{$pizza->id}}">

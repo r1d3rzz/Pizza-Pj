@@ -78,6 +78,7 @@
                     <div class="card-body">
                         <img src="{{Storage::url($pizza->image)}}" width="100%" class="mb-3" alt="">
                         <h3>{{$pizza->name}}</h3>
+                        <h4>Category : {{$pizza->category->name}}</h4>
                         <p>{{$pizza->description}}.00</p>
                         <p>Small Pizza Price - <b>${{$pizza->small_pizza_price}}.00</b></p>
                         <p>Medium Pizza Price - <b>${{$pizza->medium_pizza_price}}.00</b></p>

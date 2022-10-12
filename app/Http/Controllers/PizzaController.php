@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PizzaStoreRequest;
 use App\Http\Requests\PizzaUpdateRequest;
+use App\Models\Category;
 use App\Models\Pizza;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,9 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        return view('pizza.create');
+        return view('pizza.create',[
+            'categories' => Category::latest()->get()
+        ]);
     }
 
     /**
@@ -47,7 +50,7 @@ class PizzaController extends Controller
             'small_pizza_price' => $request->small_pizza_price,
             'medium_pizza_price' => $request->medium_pizza_price,
             'large_pizza_price' => $request->large_pizza_price,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'image' => $path,
         ]);
 
@@ -77,7 +80,8 @@ class PizzaController extends Controller
         // dd($pizza->image);
         if($pizza){
             return view('pizza.edit',[
-                'pizza' => $pizza
+                'pizza' => $pizza,
+                'categories'=>Category::get(),
             ]);
         }
 
@@ -107,7 +111,7 @@ class PizzaController extends Controller
             'small_pizza_price' => $request->small_pizza_price,
             'medium_pizza_price' => $request->medium_pizza_price,
             'large_pizza_price' => $request->large_pizza_price,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'image' => $path,
         ]);
 

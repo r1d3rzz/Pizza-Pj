@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderStoreRequest;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Pizza;
 use Illuminate\Http\Request;
@@ -10,13 +11,14 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function index(Request $request){
-        if(!$request->category){
+        if(!$request->category_id){
             return view('frontend',[
-                'pizzas' => Pizza::latest()->get(),
+                'pizzas' => Pizza::latest()->filter(request(['category']))->get(),
+                'categories' => Category::get()
             ]);
         }
         return view('frontend',[
-            'pizzas' => Pizza::latest()->where('category',$request->category)->get(),
+            'pizzas' => Pizza::latest()->where('category_id',$request->category)->get(),
         ]);
     }
 
