@@ -13,7 +13,7 @@ class FrontendController extends Controller
     public function index(Request $request){
         if(!$request->category_id){
             return view('frontend',[
-                'pizzas' => Pizza::latest()->filter(request(['category']))->get(),
+                'pizzas' => Pizza::latest()->filter(request(['category','search']))->get(),
                 'categories' => Category::get()
             ]);
         }

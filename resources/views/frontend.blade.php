@@ -9,6 +9,13 @@
                 <div class="card">
                     <div class="card-header bg-danger text-white">Menu</div>
                     <div class="card-body">
+                        <div class="mb-2">
+                            <form action="" class="input-group">
+                                <input type="text" value="{{request('search')}}" name="search" class="form-control"
+                                    placeholder="Search...">
+                                <button class="btn btn-sm btn-primary">Search</button>
+                            </form>
+                        </div>
                         <ul class="list-group">
                             @if (count($categories)>0)
                             <a href="{{route('frontend')}}" class="list-group-item list-group-item-action">All
